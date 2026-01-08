@@ -1,1 +1,1 @@
-# Getting-Started-with-DSA
+# Getting Started with DSA
