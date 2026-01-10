@@ -143,9 +143,96 @@ void pattern9(int n){
 }
 
 // Combined case for both triangles.
-// void pattern10(int n){
-//     for ()
-// }
+void pattern10(int n){ // n is the number of rows in the upper half of the pattern
+    for (int i{0};i<2*n-1;i++){
+        if (i<n){
+            for (int j{0};j<(i+1);j++){
+                cout<<'*';
+            }
+        }
+        else {
+            for (int k{2*n-1-i};k>0;k--){
+                cout<<'*';
+            }
+        }
+        cout<<'\n';
+    }
+}// Solved in the most complicated way but I am a fool so no problem :)
+
+// 1
+// 01
+// 101
+// 0101
+// 10101
+void pattern11(int n){
+//     for (int i{0};i<n;i++){
+//         if (i%2==0){
+//             for (int j{0};j<i+1;j++){
+//                 if (j%2==0){
+//                     cout<<'1';
+//                 }
+//                 else{
+//                     cout<<'0';
+//                 }
+//             }
+//         }
+//         else {
+//             for (int k{0};k<i+1;k++){
+//                 if (k%2==0){
+//                     cout<<'0';
+//                 }
+//                 else{
+//                     cout<<'1';
+//                 }
+//             }
+//         }
+//         cout<<'\n';
+//     }
+    int start{1};
+    for (int i{0};i<n;i++){
+        if (i%2==0) start = 1;
+        else start = 0;
+        for (int j{0};j<i+1;j++){
+            cout<<start;
+            start=1-start;
+        }
+        cout<<'\n';
+    }
+}
+
+// 1      1
+// 12    21
+// 123  321
+// 12344321
+/*
+PYTHON CODE
+for i in range (0,n,1):
+    for j in range (0,i+1,1):
+        print(j+1,end='')
+    for k in range(2*(n-i)-2,0,-1):
+        print(' ',end='')
+    for l in range (i+1,0,-1):
+        print(l,end='')
+    print()
+*/
+void pattern12(int n){
+    for (int i{0};i<n;i++){
+        for (int j{0};j<i+1;j++){
+            cout<<j+1;
+        }
+        for (int k{2*(n-i)-2};k>0;k--){
+            cout<<' ';
+        }
+        for (int l{i+1};l>0;l--){
+            cout<<l;
+        }
+        cout<<'\n';
+    }
+}
+
+void pattern13(int n){
+    
+}
 
 int main() {
     pattern1(5,5);
@@ -157,5 +244,8 @@ int main() {
     pattern7(5);
     pattern8(5);
     pattern9(5);
+    pattern10(5);
+    pattern11(5);
+    pattern12(4);
     return 0;
 }
