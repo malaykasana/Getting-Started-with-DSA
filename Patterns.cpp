@@ -230,7 +230,112 @@ void pattern12(int n){
     }
 }
 
+
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10
+// 11 12 13 14 15
 void pattern13(int n){
+    int num{1};
+    for (int i{0};i<n;i++){
+        for (int j{0};j<i+1;j++){
+            cout<<num<<' ';
+            ++num;
+        }
+        cout<<'\n';
+    }
+}
+
+// A
+// AB
+// ABC
+// ABCD
+// ABCDE
+void pattern14(int n){
+    for (int i{0};i<n;i++){
+        for (char ch='A';ch<'A'+i+1;++ch){
+            cout<<ch;
+        }
+        cout<<'\n';
+    }
+}
+
+// void pattern14(int n, char start){
+//     int ch{static_cast<int>(start)};
+//     for(int i{0};i<n;i++){
+//         for (int j{0};j<i+1;j++){
+//             cout<<char(ch+j);
+//         }
+//         cout<<'\n';
+//     }
+// }
+
+// ABCDE
+// ABCD
+// ABC
+// AB
+// A
+void pattern15(int n){
+    for (int i{n};i>0;--i){
+        for (char ch{'A'};ch<'A'+i;++ch){
+            cout<< ch;
+        }
+        cout<<'\n';
+    }
+}
+
+// A
+// BB
+// CCC
+// DDDD
+// EEEEE
+void pattern16(int n){
+    // char ch{'A'};
+    // for (int i{0};i<n;++i){
+    //     for (int j{0};j<i+1;++j){
+    //         cout<<ch;
+    //     }
+    //     ++ch;
+    //     cout << '\n';
+    // }
+    for (char ch{'A'};ch<'A'+n;++ch){
+        for (int chr{static_cast<int>('A')};chr<static_cast<int>(ch)+1;++chr){
+            cout <<ch;
+        }
+        cout <<'\n';        
+    }
+}
+
+//    A
+//   ABA
+//  ABCBA
+// ABCDCBA
+void pattern17(int n){
+    for (int i{0};i<n;++i){
+        for (int j{n-i-1};j>0;--j){
+            cout<<' ';
+        }
+        char ch{'A'};
+        // int midpt{i+1};
+        for (int j{0};j<2*i+1;++j){
+            cout<<ch;
+            if (j<i){
+                ++ch;
+            }
+            else{
+                --ch;
+            }
+        }
+        cout<<'\n';
+    }
+}
+
+//    A
+//   BAB
+//  CBABC
+// DCBABCD
+void pattern18(int n){
     
 }
 
@@ -247,5 +352,11 @@ int main() {
     pattern10(5);
     pattern11(5);
     pattern12(4);
+    pattern13(5);
+    pattern14(5);
+    // pattern14(5, 'A');
+    pattern15(5);
+    pattern16(5);
+    pattern17(5);
     return 0;
 }
