@@ -142,7 +142,15 @@ void pattern9(int n){
     }
 }
 
-// Combined case for both triangles.
+// *
+// **
+// ***
+// ****
+// *****
+// ****
+// ***
+// **
+// *
 void pattern10(int n){ // n is the number of rows in the upper half of the pattern
     for (int i{0};i<2*n-1;i++){
         if (i<n){
@@ -317,7 +325,6 @@ void pattern17(int n){
             cout<<' ';
         }
         char ch{'A'};
-        // int midpt{i+1};
         for (int j{0};j<2*i+1;++j){
             cout<<ch;
             if (j<i){
@@ -336,7 +343,115 @@ void pattern17(int n){
 //  CBABC
 // DCBABCD
 void pattern18(int n){
-    
+    for (int i{0};i<n;++i){
+        for (int k{n-i-1};k>0;--k){
+            cout<<' ';
+        }
+        char start{'A'};
+        for (int j{0};j<2*i+1;++j){
+            cout<<static_cast<char>(start+i);
+            if (j<i){
+                --start;
+            }
+            else{
+                ++start;
+            }
+        }
+        cout<<'\n';
+    }
+}
+
+// E
+// DE
+// CDE
+// BCDE
+// ABCDE
+void pattern19(int n){
+    for (int i{0};i<n;++i){
+        char start {'A'+n-i-1};
+        for (int j{0};j<i+1;++j){
+            cout<<start;
+            ++start;
+        }
+        cout<<'\n';
+    }
+}
+
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+// *        *
+// **      **
+// ***    ***
+// ****  ****
+// **********
+void pattern20(int n){
+    for (int i{0};i<2*n;++i){
+        if (i<n){
+            for (int j{n-i};j>0;--j){
+                cout<<'*';
+            }
+            for (int k{0};k<2*i;++k){
+                cout<<' ';
+            }
+            for (int l{n-i};l>0;--l){
+                cout<<'*';
+            }
+            cout<<'\n';
+        }
+        else{
+            for (int j{n};j<i+1;++j){
+                cout<<'*';
+            }
+            for (int k{0};k<2*(2*n-i-1);++k){
+                cout<<' ';
+            }
+            for (int l{n};l<i+1;++l){
+                cout<<'*';
+            }
+            cout<<'\n';
+        }
+    }
+}
+
+// *        *
+// **      **
+// ***    ***
+// ****  ****
+// **********
+// ****  ****
+// ***    ***
+// **      **
+// *        *
+void pattern21(int n){
+    for ( int i{0} ; i<2*n-1 ; ++i ){
+        if (i<n){
+            for ( int j{0} ; j<i+1 ; ++j ){
+                cout<< '*' ;
+            }
+            for ( int k {2*(n-i-1)} ; k>0 ; --k ){
+                cout<< ' ' ;
+            }
+            for ( int l{0} ; l<i+1 ; ++l ){
+                cout<< '*' ;
+            }
+            cout<< '\n' ;
+        }
+        else {
+            for ( int j {2*n-1-i} ; j>0 ; --j){
+                cout<< '*' ;
+            }
+            for ( int k {0} ; k<2*(i+1-n) ; ++k ){
+                cout<< ' ' ;
+            }
+            for ( int l {2*n-1-i} ; l>0 ; --l){
+                cout<< '*' ;
+            }
+            cout<< '\n';
+        }
+    }
 }
 
 int main() {
@@ -358,5 +473,9 @@ int main() {
     pattern15(5);
     pattern16(5);
     pattern17(5);
+    pattern18(5);
+    pattern19(5);
+    pattern20(5);
+    pattern21(5);
     return 0;
 }
