@@ -454,6 +454,28 @@ void pattern21(int n){
     }
 }
 
+// ****
+
+// *  *
+
+// *  *
+
+// ****
+void pattern22(int n){
+
+}
+
+// 4444444
+// 4333334
+// 4322234
+// 4321234
+// 4322234
+// 4333334
+// 4444444
+void pattern23(int n){
+
+}
+
 int main() {
     pattern1(5,5);
     pattern2(5);
@@ -477,5 +499,7 @@ int main() {
     pattern19(5);
     pattern20(5);
     pattern21(5);
+    pattern22(4);
+    pattern23(4);
     return 0;
 }
