@@ -455,14 +455,36 @@ void pattern21(int n){
 }
 
 // ****
-
 // *  *
-
 // *  *
-
 // ****
 void pattern22(int n){
-
+    // for ( int i{0} ; i<n ; ++i){
+    //     if (i==0 or i==n-1){
+    //         for ( int j{0} ; j<n ; ++j){
+    //             cout<< '*';
+    //         }
+    //     }
+    //     else {
+    //         cout<< '*';
+    //         for ( int j{1} ; j<n-1 ; ++j){
+    //             cout<< ' ';
+    //         }
+    //         cout<< '*';
+    //     }
+    //     cout << '\n';
+    // }
+    for ( int i{0} ; i<n ; ++i){
+        for ( int j{0} ; j<n ; ++j){
+            if (i==0 or i==n-1 || j==0 || j==n-1){ // or is also written as ||
+                cout<< '*';
+            }
+            else {
+                cout<< ' ';
+            }
+        }
+        cout<< '\n';
+    }
 }
 
 // 4444444
@@ -472,8 +494,31 @@ void pattern22(int n){
 // 4322234
 // 4333334
 // 4444444
+int minoftwo(int num1,int num2){
+    if (num1<num2){
+        return num1;
+    }
+    else {
+        return num2;
+    }
+}
+int minimum(int n1,int n2,int n3, int n4){
+    // int a= minoftwo(top,bottom);
+    // int b= minoftwo(left,right);
+    return minoftwo(minoftwo(n1,n2),minoftwo(n3,n4));
+}
 void pattern23(int n){
-
+    for ( int i{0} ; i<2*n-1 ; i++ ){
+        for ( int j{0} ; j<2*n-1 ; ++j ){
+            int top =i;
+            int left =j;
+            int bottom =2*n-2-i;
+            int right =2*n-2-j;
+            int mindis=minimum(top,bottom,left,right);
+            cout << n-mindis;
+        }
+        cout<< '\n';
+    }
 }
 
 int main() {
