@@ -186,3 +186,71 @@ int main(){
 }
 */
 
+// Arange the elements of an array in Reverse order  
+/*
+// TC -> O(N)
+void f(int l, int r, int arr[]){
+    if (l>=r) return;
+    swap (arr[l],arr[r]);
+    f(l+1,r-1,arr);
+}
+int main(){
+    int arr[]={1,2,3,4,5};
+    f(0,4,arr);
+    for (int i{0};i<5;++i){
+        cout<< arr[i];
+    } 
+}
+*/
+/*
+// TC -> O(N/2)
+#include <array>
+void f(int i,int n,int arr[]){
+    if (i>=n/2) return;
+    swap(arr[i],arr[n-i-1]);
+    f(i+1,n,arr);
+}
+int main(){
+    int arr[]{1,2,3,4,5};
+    f(0,size(arr),arr);
+    for (int i{0};i<5;++i) cout<< arr[i];
+}
+*/
+
+// Check if a string is palindrome
+/*
+// TC -> O(N/2)
+#include <string>
+bool ifpalindrome(int i,string &s){
+    if (i>=s.size()/2) return true;
+    if (s[i] != s[s.size()-i-1]) return false;
+    return ifpalindrome(i+1,s);
+}
+int main(){
+    string s{"madam"};
+    cout<<ifpalindrome(0,s);
+    return 0;
+}
+*/
+
+// Multiple Function Calls
+// Fibonacci Series
+// 0 1 1 2 3 5 8 13 21 34 ... -> 0 is 0th term.
+/*
+f[0]=0 f[1]=1
+for (i=2 -> n)
+    f[i] = f[i-1] + f[i-2]
+*/
+// TC -> O(2^n) exponential in nature
+int f(int n){
+    if (n<=1) return n;
+    cout << "i have reached : "<< n << '\n';
+    return f(n-1)+f(n-2);
+}
+int main(){
+    int n{};
+    cout<< "Enter a number (dont take it above 25 if you dont want to fry your pc) : ";
+    cin>>n;
+    cout << f(n);
+    return 0;
+}
