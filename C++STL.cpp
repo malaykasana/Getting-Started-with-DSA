@@ -178,6 +178,7 @@ void explainVector(){
     
     // Insert function - adds elements at specific positions
     vector<int> vins(2, 100);  // {100, 100}
+    vins.reserve(10);  // Add this line before the inserts to not show the fking error
     vins.insert(vins.begin(), 300);  // Insert 300 at the beginning: {300, 100, 100}
     cout << "After inserting 300 at begin: ";
     for (auto x : vins) cout << x << ' ';
@@ -1102,7 +1103,7 @@ void explainExtra(){
     
     // count - count occurrences
     vector<int> v6 = {1, 2, 1, 3, 1, 4};
-    int cnt = count(v6.begin(), v6.end(), 1);
+    int cnt = static_cast<int>(count(v6.begin(), v6.end(), 1));
     cout << "Count of 1: " << cnt << endl;  // 3
     
     // find - find first occurrence
@@ -1136,7 +1137,7 @@ void explainExtra(){
     // Practical example: counting set bits in a mask
     int mask = 0b10101010;  // Binary: 10101010 = 170
     cout << "\nMask: 0b10101010 (decimal: " << mask << ")" << endl;
-    cout << "  Number of set bits: " << __builtin_popcount(mask) << endl;  // 4
+    cout << "  Number of set bits: " << __builtin_popcount(static_cast<unsigned int>(mask)) << endl;  // 4
     
     cout << "-----------------------------------" << endl;
 }
