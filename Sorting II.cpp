@@ -71,13 +71,46 @@ void qS(vector<int> &arr, int low, int high){
     }
 }
 
+// Recursive Bubble Sort
+// TC -> O(n^2)
+// SC -> O(n)
+void r_bs(vector<int> &arr, int n){
+    if (n==0) return;
+    int didswap{0};
+    for (int i{0};i<n;++i){
+        if (arr[i]>arr[i+1]){ 
+            swap(arr[i],arr[i+1]);
+            didswap=1;
+        }
+    }
+    if (didswap==0) return;
+    r_bs(arr,n-1);
+    return;
+}
+
+// Recursive Insertion Sort
+// TC -> O(n^2)
+// SC -> O(n)
+void r_is(vector<int> &arr, int n, int i){
+    int j{i};
+    while(j>0 && arr[j]<arr[j-1]){
+        swap(arr[j],arr[j-1]);
+        --j;
+    }
+    if (i==n-1) return;
+    r_is(arr,n,i+1);
+    return;
+}
+
 int main(){
     std::cout<<"This is starting.\n";
     std::vector<int> arr{1,10,20,50,1,10,9,100,200};
     int low{0};
     int high{static_cast<int>(arr.size()-1)};
-    divide(arr,low,high);
+    // divide(arr,low,high);
     // qS(arr,low,high);
+    // r_bs(arr,high-1);
+    // r_is(arr,high-1,1);
     for (int i{low} ; i<=high ; ++i){
         std::cout<<arr[i]<<' ';
     }
