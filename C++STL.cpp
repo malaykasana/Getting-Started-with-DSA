@@ -13,19 +13,20 @@ and data structures. Each function demonstrates a different container with:
 
 CONTENTS:
 1. explainPair()          - Storing two values together
-2. explainVector()        - Dynamic arrays (most commonly used)
-3. explainList()          - Doubly linked list
-4. explainDeque()         - Double-ended queue
-5. explainStack()         - LIFO (Last In First Out)
-6. explainQueue()         - FIFO (First In First Out)
-7. explainPQ()            - Priority Queue (Heap)
-8. explainSet()           - Unique elements, sorted
-9. explainMultiSet()      - Allows duplicates, sorted
-10. explainUnorderedSet() - Unique elements, fast, no order
-11. explainMap()          - Key-value pairs, sorted by keys
-12. explainMultiMap()     - Duplicate keys allowed, sorted
-13. explainUnorderedMap() - Key-value pairs, fast, no order
-14. explainExtra()        - Custom sorting and STL algorithms
+2. explainArray()         - Fixed-size array fundamentals
+3. explainVector()        - Dynamic arrays (most commonly used)
+4. explainList()          - Doubly linked list
+5. explainDeque()         - Double-ended queue
+6. explainStack()         - LIFO (Last In First Out)
+7. explainQueue()         - FIFO (First In First Out)
+8. explainPQ()            - Priority Queue (Heap)
+9. explainSet()           - Unique elements, sorted
+10. explainMultiSet()      - Allows duplicates, sorted
+11. explainUnorderedSet() - Unique elements, fast, no order
+12. explainMap()          - Key-value pairs, sorted by keys
+13. explainMultiMap()     - Duplicate keys allowed, sorted
+14. explainUnorderedMap() - Key-value pairs, fast, no order
+15. explainExtra()        - Custom sorting and STL algorithms
 
 QUICK DECISION GUIDE:
 - Need fast random access? → vector
@@ -73,6 +74,145 @@ void explainPair(){
     pair<int, int> arr[] = {{1, 2}, {2, 5}, {5, 1}};
     cout << "Second element of second pair: " << arr[1].second << endl;  // Output: 5
     // arr[1] = {2, 5}, so arr[1].second = 5
+    
+    cout << "-----------------------------------" << endl;
+}
+
+// ============================================================================
+// ARRAY: Fixed-size collection of elements (foundation for dynamic arrays)
+// ============================================================================
+void explainArray(){
+    // Time Complexity: O(1) for access, insertion/deletion in middle requires shifting
+    
+    cout << "=== ARRAY (Fixed-size, static memory allocation) ===" << endl;
+    
+    // Creating an array
+    int arr[5];  // Creates array of 5 integers (values are uninitialized/garbage)
+    
+    // Array initialization - important to do this to avoid garbage values
+    int arr1[5] = {1, 2, 3, 4, 5};  // Explicitly initialize all elements
+    cout << "Array initialized: ";
+    for (int i = 0; i < 5; i++) {
+        cout << arr1[i] << ' ';
+    }
+    cout << endl;
+    
+    // Partial initialization - remaining elements are set to 0
+    int arr2[5] = {1, 2, 3};  // {1, 2, 3, 0, 0}
+    cout << "Partial initialization: ";
+    for (int i = 0; i < 5; i++) {
+        cout << arr2[i] << ' ';
+    }
+    cout << endl;
+    
+    // Array with all zeros
+    int arr3[5] = {};  // All elements initialized to 0
+    cout << "All zeros: ";
+    for (int i = 0; i < 5; i++) {
+        cout << arr3[i] << ' ';
+    }
+    cout << endl;
+    
+    // Accessing array elements
+    cout << "First element (arr1[0]): " << arr1[0] << endl;   // Index 0
+    cout << "Third element (arr1[2]): " << arr1[2] << endl;   // Index 2
+    cout << "Last element (arr1[4]): " << arr1[4] << endl;    // Index 4
+    
+    // IMPORTANT: Array indexing starts from 0
+    // For array of size 5, valid indices are 0, 1, 2, 3, 4
+    // Accessing arr1[5] is OUT OF BOUNDS (undefined behavior!)
+    
+    // Getting array size
+    int size = sizeof(arr1) / sizeof(arr1[0]);  // Size = 5
+    cout << "Array size: " << size << endl;
+    
+    // IMPORTANT: This trick only works for static arrays declared on stack
+    // Does NOT work for arrays passed as function parameters or allocated on heap
+    
+    // Modifying array elements
+    arr1[0] = 100;  // Change first element to 100
+    arr1[4] = 200;  // Change last element to 200
+    cout << "After modifications: ";
+    for (int i = 0; i < 5; i++) {
+        cout << arr1[i] << ' ';
+    }
+    cout << endl;
+    
+    // Iterating through arrays
+    cout << "--- Different ways to iterate ---" << endl;
+    
+    // Method 1: Using index (traditional way)
+    cout << "Index loop: ";
+    for (int i = 0; i < 5; i++) {
+        cout << arr1[i] << ' ';
+    }
+    cout << endl;
+    
+    // Method 2: Using pointer arithmetic
+    cout << "Pointer arithmetic: ";
+    for (int* p = arr1; p < arr1 + 5; p++) {
+        cout << *p << ' ';  // *p dereferences the pointer to get value
+    }
+    cout << endl;
+    
+    // Method 3: Range-based for loop (C++11 and later)
+    cout << "Range-based loop: ";
+    for (int x : arr1) {
+        cout << x << ' ';
+    }
+    cout << endl;
+    
+    // Multidimensional arrays (2D array)
+    cout << "\n--- 2D ARRAYS ---" << endl;
+    int matrix[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+    
+    cout << "2D array (2 rows x 3 columns):" << endl;
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << matrix[i][j] << ' ';
+        }
+        cout << endl;
+    }
+    
+    // Accessing 2D array elements
+    cout << "Element at matrix[0][1]: " << matrix[0][1] << endl;  // 2
+    cout << "Element at matrix[1][2]: " << matrix[1][2] << endl;  // 6
+    
+    // Using range-based loop with 2D arrays
+    cout << "2D array with range loop: ";
+    for (auto& row : matrix) {  // row is reference to each row
+        for (int val : row) {
+            cout << val << ' ';
+        }
+    }
+    cout << endl;
+    
+    // Array of pairs (useful for storing coordinate data)
+    pair<int, int> coords[3] = {{1, 2}, {3, 4}, {5, 6}};
+    cout << "\nArray of pairs:" << endl;
+    for (int i = 0; i < 3; i++) {
+        cout << "{" << coords[i].first << ", " << coords[i].second << "} ";
+    }
+    cout << endl;
+    
+    // KEY PROPERTIES OF ARRAYS:
+    cout << "\n--- KEY PROPERTIES ---" << endl;
+    cout << "1. Fixed size: Cannot grow or shrink after creation" << endl;
+    cout << "2. Contiguous memory: All elements stored consecutively" << endl;
+    cout << "3. Fast random access: O(1) to access any element by index" << endl;
+    cout << "4. Slow insertion/deletion: O(n) in middle due to shifting" << endl;
+    cout << "5. Stack allocation: Array size must be known at compile time" << endl;
+    cout << "6. Type homogeneous: All elements must be same type" << endl;
+    
+    // ARRAYS vs VECTORS:
+    cout << "\n--- ARRAYS vs VECTORS ---" << endl;
+    cout << "Arrays:  Fixed size, fast, simpler, limited flexibility" << endl;
+    cout << "Vectors: Dynamic size, flexible, slightly slower, more features" << endl;
+    cout << "Use ARRAY when: Size is known and fixed at compile time" << endl;
+    cout << "Use VECTOR when: Size may change, or you need flexibility" << endl;
     
     cout << "-----------------------------------" << endl;
 }
@@ -1153,6 +1293,7 @@ int main(){
     cout << "\n";
     
     explainPair();
+    explainArray();
     explainVector();
     explainList();
     explainDeque();
