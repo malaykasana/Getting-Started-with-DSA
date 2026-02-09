@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// print numbers from 0 to 2 by recursion
 /*
 int cnt{0};
 void print(){
@@ -242,6 +243,7 @@ for (i=2 -> n)
     f[i] = f[i-1] + f[i-2]
 */
 // TC -> O(2^n) exponential in nature
+/*
 int f(int n){
     if (n<=1) return n;
     cout << "i have reached : "<< n << '\n';
@@ -254,3 +256,4 @@ int main(){
     cout << f(n);
     return 0;
 }
+*/
