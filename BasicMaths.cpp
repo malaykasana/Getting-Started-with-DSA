@@ -39,13 +39,13 @@ bool ifpalindrome(int n){
 
 bool ifarmstrongfor3digit(int n){
     int dup{n};
-    int sumofsquares{0};
+    int sumofcubes{0};
     while (n>0){
         int r{n%10};
         n /= 10;
-        sumofsquares += (r*r*r);
+        sumofcubes += (r*r*r);
     }
-    if (dup==sumofsquares){
+    if (dup==sumofcubes){
         return true;
     }
     else {
