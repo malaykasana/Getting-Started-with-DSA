@@ -7,25 +7,29 @@ using namespace std;
 /*
 int main() {
     unsigned int n;
+    cout<<"Enter the size of the array: ";
     cin>>n;
+    cout<<"Enter the elements of the array: ";
     vector<int> vec(n);
-    for (unsigned int i{};i<n;++i)   // O(N)
+    for (unsigned int i{};i<n;++i)
         cin>>vec[i]; 
 
     // precompute
     int hash[13]{};
-    for (unsigned int i{};i<n;++i){  // O(Q)
+    for (unsigned int i{};i<n;++i){   // O(N)
         hash[vec[i]]++;
     }
     int q{};
+    cout << "Enter the number of queries: ";
     cin>>q;
-    while(q--){
+    cout << "Enter the numbers to query: ";
+    while(q--){                       // O(Q)
         int number;
         cin>>number;
         // fetch
         cout << hash[number]<<'\n';
     }
-    return 0;                         // O(Q*N)
+    return 0;                         // O(Q+N)
 }
 */
 
@@ -61,7 +65,7 @@ int main() {
 
 // Number Hashing using Map
 // Can also use unordered_map for better average time complexity its just that map keeps the keys in sorted order
-/*
+// /*
 #include <map>             // O(log N) operations
 #include <unordered_map>   // O(1) average time complexity for best and average storing and fetching operations
                            // O(N) TC for worst case due to internal collisions i.e. when all keys hash to same bucket
@@ -72,8 +76,7 @@ int main() {
     // map<int,int> mpp;   // we can also declare map here and do precomputation in the input loop
     for(unsigned int i{};i<n;++i){
         cin>>arr[i];
-        // precomputation here
-        mpp[arr[i]]++;
+        // mpp[arr[i]]++;   // precomputation here
     }
 
     // Precompute
@@ -96,9 +99,10 @@ int main() {
         cout<< mpp[number]<<'\n';
     }
 }
-*/
+// */
 
 // Find the Highest and Lowest Frequency number in an array
+/*
 #include <unordered_map>
 int main() {
     unsigned int n{};
@@ -109,14 +113,14 @@ int main() {
         cin>>arr[i];
         mpp[arr[i]]++;
     }
-    int maxFreq{0}, minFreq{static_cast<int>(n)};
-    int maxFreqNum{}, minFreqNum{};
+    int maxFreq{}, minFreq{static_cast<int>(n)};
+    int maxFreqNum{arr[0]}, minFreqNum{arr[0]};
     for (auto it:mpp){
-        if (it.second > maxFreq){
+        if ((it.second > maxFreq) || (it.second == maxFreq && it.first > maxFreqNum)){
             maxFreq = it.second;
             maxFreqNum = it.first;
         }
-        if (it.second < minFreq){
+        if ((it.second < minFreq) || (it.second == minFreq && it.first < minFreqNum)){
             minFreq = it.second;
             minFreqNum = it.first;
         }
@@ -125,3 +129,4 @@ int main() {
     cout<<"Number with Lowest Frequency: "<<minFreqNum<<" Frequency: "<<minFreq<<'\n';
     return 0;
 }
+*/
