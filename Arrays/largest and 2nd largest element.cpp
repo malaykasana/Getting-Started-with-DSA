@@ -73,4 +73,3 @@ int main() {
     // printarray(arr,size);
     return 0;
 }
-
