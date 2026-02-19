@@ -2,7 +2,7 @@
 #include <unordered_map>
 using namespace std;
 
-// o(n2), o(n)
+// o(n2), o(1)
 // most brute method is that run a loop to select an element in the array
 // run another loop to count the occurances of that element
 // if occurance==1  return that element
@@ -19,7 +19,6 @@ int brute(int arr[], int n){
     return -1;
 }
 
-// If negatives or large gaps exist, unordered_map is more space-efficient.
 // For small, dense, non-negative ranges: array hashing is faster.
 // For large, sparse, or negative ranges: unordered_map is better due to space efficiency.
 
