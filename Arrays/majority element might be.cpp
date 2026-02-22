@@ -27,6 +27,7 @@ int better(int arr[], int n){
     return -1;
 }
 
+// Moore's voting algo
 int optimal(int arr[], int n){
     int cnt{};
     int el{};
