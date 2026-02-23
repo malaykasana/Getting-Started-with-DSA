@@ -44,8 +44,6 @@ pair<int,int> better(int arr[], int n, int k){
 }
 
 pair<int,int> optimal(int arr[], int n, int k){
-    int key;
-    int value;
     int i{}, j{n-1}, sum{};
     pair<int,int> sortarr[n]{};
     for (int it{} ; it<n ; ++it){
