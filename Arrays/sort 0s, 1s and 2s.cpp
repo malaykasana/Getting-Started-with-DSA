@@ -58,7 +58,7 @@ void better(int arr[], int n){
 }
 
 // dutch national flag algorithm - uses three pointers.
-// 0s- low to low-1
+// 0s- 0 to low-1
 // 1s- low to mid-1
 // unsorted- mid to high
 // 2s- high+1 to n-1
