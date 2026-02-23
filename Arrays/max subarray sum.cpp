@@ -7,7 +7,7 @@ int brute(int arr[], int n){
     for (int i{} ; i<n ; ++i){
         for (int j{i} ; j<n ; ++j){
             Sum = 0;
-            for (int k{i} ; k<j ; ++k){
+            for (int k{i} ; k<=j ; ++k){
                 Sum += arr[k];
             }
             if (Sum > max_sum) max_sum = Sum;
