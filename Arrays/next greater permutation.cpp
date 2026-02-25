@@ -6,9 +6,23 @@ using namespace std;
 // Generate all permutations in sorted order
 // Linear or binary search to find the given permutation
 // return permutation at next index and if at last index return 1st permutation
-// vector<int> brute (int arr[], int n){
-    
-// }
+void permute(int arr[], int arr2[][&n], int l, int r){
+
+}
+
+vector<int> brute (int arr[], int n){
+    int total{};
+    for (int i{1} ; i<=n ; ++i){
+        total*=i;
+    }
+    int max{};
+    for (int i{} ; i<n ; ++i){
+        if (arr[i]>max) max= arr[i];
+    }
+    ;
+    int arr2[total][n];
+    permute(arr, arr2, 0, n-1);
+}
 
 // use C++ STL
 void better (int arr[], int n){
@@ -41,7 +55,7 @@ void optimal(int arr[], int n){
 
 int main() {
     int arr[]{1,3,2};
-    // vector<int> v{brute(arr, size(arr))};
+    vector<int> v{brute(arr, size(arr))};
     better (arr, size(arr));
     for (int it : arr) cout << it << ' ';
     cout << endl;
