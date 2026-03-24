@@ -229,8 +229,8 @@ int main() {
     // for (int i{} ; i<6 ; ++i) cout << ans[i][0] << ' ' << ans[i][1] << ' ' << ans[i][2] << endl;
     // delete[] ans;
 
-    // better (givenarr, size(arr));
-    // for (int it : arr) cout << it << ' ';
+    // better (givenarr, size(givenarr));
+    // for (int it : givenarr) cout << it << ' ';
     // cout << endl;
     // optimal (givenarr, size(arr));
     return 0;
