@@ -40,15 +40,23 @@ int brute2(int arr[], int n, int k){
 // O(n), O(n)
 // O(nlogn) if we use map instead of unordered_map
 int better(int arr[], int n, int k){
+    // Stores first index where a prefix sum appears.
     unordered_map<int,int> presumMap;
     int len{}, presum{};
     for (int i{} ; i<n ; ++i){
+        // Prefix sum from index 0 to i.
         presum += arr[i];
+
+        // If prefix itself is k, subarray (0..i) is valid.
         if (presum==k) len=i+1;
+
+        // Need an older prefix = (current prefix - k).
         int rem{presum-k};
         if (presumMap.find(rem) != presumMap.end()){
+            // Subarray length is current index - index of needed prefix.
             if (len < i-presumMap[rem]) len = i-presumMap[rem];
         }
+        // Keep first occurrence only to maximize subarray length.
         if (presumMap.find(presum) == presumMap.end()) presumMap[presum]=i;
     }
     return len;
